@@ -1,8 +1,8 @@
 ## fig_1d_null.R -- 1-D null distributions at sigma_A = 0.05, five nuisance points (analogue of NPLM EPJC 82:275 Fig. 5),
 ## one figure per witness, 400 toys per point. Z with the fitting-variance term (NN: Z_fit; dictionary: Z_fit_Q) and
 ## without it (Z_orth / Z_orth_Q). Grey band: N(0, 1).
-## Run from the repository root:  Rscript paper_epjc/scripts/fig_1d_null.R   -> paper_epjc/figures/fig_1d_null_{nn,dict}.pdf
-source("paper_epjc/scripts/summ.R"); source("paper_epjc/scripts/figs.R")
+## Run from the repository root:  Rscript paper_figures_tables/scripts/fig_1d_null.R   -> paper_figures_tables/figures/fig_1d_null_{nn,dict}.pdf
+source("paper_figures_tables/scripts/summ.R"); source("paper_figures_tables/scripts/figs.R")
 lab <- list(c("0", "0"), c("+1", "0"), c("0", "+1"), c("-1", "0"), c("0", "-1"))   # (nu*_s/sigma_s, nu*_n/sigma_n)
 ## same order as lab; nu_star in code = c(nu_n, nu_s)
 nn <- c("null_nu0_c4w_e20k-30k-50k_tap2_s501/results_e30000.rds", "null_nu0_0.05_c4w_e30000_tap2_s505/results.rds",
@@ -27,5 +27,5 @@ build <- function(files, loader, out) {
     theme(legend.position = "bottom")
   ggsave(out, p, width = 7.2, height = 4.4, device = cairo_pdf); cat("->", out, "\n")
 }
-build(nn, load_nn, "paper_epjc/figures/fig_1d_null_nn.pdf")
-build(dc, load_dc, "paper_epjc/figures/fig_1d_null_dict.pdf")
+build(nn, load_nn, "paper_figures_tables/figures/fig_1d_null_nn.pdf")
+build(dc, load_dc, "paper_figures_tables/figures/fig_1d_null_dict.pdf")

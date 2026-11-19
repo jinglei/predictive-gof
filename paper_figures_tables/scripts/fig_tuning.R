@@ -6,8 +6,8 @@
 ## encoding), marker (circle / triangle / square) and line style (solid / dashed / dot-dash), so the figure reads in
 ## greyscale. Reference lines (grey long-dash, keyed in the legend): the nominal 5% level in the null panel (thin) and,
 ## in the 1-D signal panels, the dictionary at its default penalty (lambda_z = 1.3, damping "none"; thick).
-## Run from the repository root:  Rscript paper_epjc/scripts/fig_tuning.R -> paper_epjc/figures/fig_{1d,5d}_tuning.pdf
-source("paper_epjc/scripts/sensitivity_data.R"); source("paper_epjc/scripts/figs.R")
+## Run from the repository root:  Rscript paper_figures_tables/scripts/fig_tuning.R -> paper_figures_tables/figures/fig_{1d,5d}_tuning.pdf
+source("paper_figures_tables/scripts/sensitivity_data.R"); source("paper_figures_tables/scripts/figs.R")
 CCOL <- c("#6250d6", "#e34948", "#008300")             # violet, red, green
 CSHP <- c(16, 17, 15)                                   # circle, triangle, square (filled)
 CLTY <- c("solid", "22", "4212")                        # solid, dashed, dot-dash
@@ -51,10 +51,10 @@ ref1 <- function(sg) if (sg == "null") NULL else dh$median[dh$setting == sg]
 p1 <- (panel(d1, "null", c("3", "4", "6"), title = "null") | panel(d1, "NP1", c("3", "4", "6"), ref1("NP1")) |
        panel(d1, "NP2", c("3", "4", "6"), ref1("NP2")) | panel(d1, "NP3", c("3", "4", "6"), ref1("NP3"))) +
   plot_layout(guides = "collect") & theme(legend.position = "bottom")
-ggsave("paper_epjc/figures/fig_1d_tuning.pdf", p1, width = 7.2, height = 2.9, device = cairo_pdf)
+ggsave("paper_figures_tables/figures/fig_1d_tuning.pdf", p1, width = 7.2, height = 2.9, device = cairo_pdf)
 d5 <- sens_5d()
 p5 <- (panel(d5, "null", c("0.7", "1", "1.3"), title = "null") | panel(d5, "Zprime300", c("0.7", "1", "1.3"), title = "Z′") |
        panel(d5, "EFT06_2", c("0.7", "1", "1.3"), title = "EFT")) +
   plot_layout(guides = "collect") & theme(legend.position = "bottom")
-ggsave("paper_epjc/figures/fig_5d_tuning.pdf", p5, width = 6.2, height = 2.9, device = cairo_pdf)
-cat("-> paper_epjc/figures/fig_1d_tuning.pdf, fig_5d_tuning.pdf\n")
+ggsave("paper_figures_tables/figures/fig_5d_tuning.pdf", p5, width = 6.2, height = 2.9, device = cairo_pdf)
+cat("-> paper_figures_tables/figures/fig_1d_tuning.pdf, fig_5d_tuning.pdf\n")

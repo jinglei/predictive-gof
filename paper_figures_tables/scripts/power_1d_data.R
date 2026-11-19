@@ -3,7 +3,7 @@
 ## Producing runs: sigma_A = 0.05, nu* = 0 -- run_nn1d_grid.R 4 (seed 601), launch_pois_dmpnone.R (seed 1001);
 ## all other settings -- run_power_1d.R (NN seeds 507-512, dictionary seeds 1012-1017).
 ## Defines power_1d(): one row per (witness, signal, setting) with summ_z() columns.
-source("paper_epjc/scripts/summ.R")
+source("paper_figures_tables/scripts/summ.R")
 POWER_SETS <- data.frame(
   setting = c("0", "0", "0", "+sigma_n", "-sigma_n", "+sigma_s", "-sigma_s"),
   sigma_A = c(0.05, 0.10, 0.15, 0.05, 0.05, 0.05, 0.05),

@@ -3,8 +3,8 @@
 ## marker shape (circle / triangle / square) and, in the left panel, line style (solid / dashed / dotted), so the figure
 ## reads in black and white; witness: filled marker = network, open marker = dictionary. Bars: bootstrap se of the median (400 toys). Raw median Z, not divided by
 ## a model-dependent Z_ref: the +-sigma_s points move the background under the signal, so raw Z moves with them.
-## Run from the repository root:  Rscript paper_epjc/scripts/fig_1d_power.R   -> paper_epjc/figures/fig_1d_power.pdf
-source("paper_epjc/scripts/power_1d_data.R"); source("paper_epjc/scripts/figs.R")
+## Run from the repository root:  Rscript paper_figures_tables/scripts/fig_1d_power.R   -> paper_figures_tables/figures/fig_1d_power.pdf
+source("paper_figures_tables/scripts/power_1d_data.R"); source("paper_figures_tables/scripts/figs.R")
 SCOL <- c(NP1 = "#2a78d6", NP2 = "#eb6834", NP3 = "#1baf7a")   # validated: all pairs pass; aqua needs labels (relief)
 ## Signal: colour + shape + linetype (one merged legend key per signal). Witness: fill (signal colour = network,
 ## white = dictionary); the fill legend shows two keys only.
@@ -42,5 +42,5 @@ pb <- ggplot(b, aes(x, median, colour = signal)) +
   labs(x = "true nuisance shift", y = "median Z", title = expression(sigma[A] == 0.05)) + theme_paper() +
   guides(colour = "none", shape = "none", fill = "none")
 p <- (pa | pb) + plot_layout(widths = c(1, 1.3), guides = "collect") & theme(legend.position = "bottom")
-ggsave("paper_epjc/figures/fig_1d_power.pdf", p, width = 7.2, height = 3.4, device = cairo_pdf)
-cat("-> paper_epjc/figures/fig_1d_power.pdf\n")
+ggsave("paper_figures_tables/figures/fig_1d_power.pdf", p, width = 7.2, height = 3.4, device = cairo_pdf)
+cat("-> paper_figures_tables/figures/fig_1d_power.pdf\n")

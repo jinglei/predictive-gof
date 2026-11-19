@@ -1,11 +1,11 @@
 ## tex_tables_1d.R -- LaTeX tables for Section 5 (one-dimensional benchmark), typeset from the CSVs.
 ## Inputs: tables/table_1d.csv (table_1d.R), tables/table_1d_power.csv (table_1d_power.R).
-## Run from the repository root:  Rscript paper_epjc/scripts/tex_tables_1d.R
-##   -> paper_epjc/tables/table_1d_null.tex, paper_epjc/tables/table_1d_power.tex
+## Run from the repository root:  Rscript paper_figures_tables/scripts/tex_tables_1d.R
+##   -> paper_figures_tables/tables/table_1d_null.tex, paper_figures_tables/tables/table_1d_power.tex
 ## rates are multiples of 1/400 = 0.0025, so four decimals are exact
 f3 <- function(x) ifelse(is.na(x), "--", sprintf("%.4f", round(x, 4)))
 f2 <- function(x) sprintf("%.2f", round(x, 2))
-d <- read.csv("paper_epjc/tables/table_1d.csv", stringsAsFactors = FALSE)
+d <- read.csv("paper_figures_tables/tables/table_1d.csv", stringsAsFactors = FALSE)
 nu_lab <- c("0" = "$0$", "+sigma_n" = "$+\\sigma_n$", "-sigma_n" = "$-\\sigma_n$",
             "+sigma_s" = "$+\\sigma_s$", "-sigma_s" = "$-\\sigma_s$")
 ## ---- validity: sizes at 5% / 1% for both witnesses, every null setting ----
@@ -23,9 +23,9 @@ writeLines(c("\\begin{tabular}{llcccc}", "\\toprule",
   " & & \\multicolumn{2}{c}{network} & \\multicolumn{2}{c}{dictionary} \\\\",
   "\\cmidrule(lr){3-4}\\cmidrule(lr){5-6}",
   "$\\sigma_A$ & $\\nu^*$ & $5\\%$ & $1\\%$ & $5\\%$ & $1\\%$ \\\\", "\\midrule", rows, "\\bottomrule", "\\end{tabular}"),
-  "paper_epjc/tables/table_1d_null.tex")
+  "paper_figures_tables/tables/table_1d_null.tex")
 ## ---- power at sigma_A = 0.05, nu* = 0 ----
-p <- read.csv("paper_epjc/tables/table_1d_power.csv", stringsAsFactors = FALSE)
+p <- read.csv("paper_figures_tables/tables/table_1d_power.csv", stringsAsFactors = FALSE)
 p0 <- p[p$setting == "0" & p$sigma_A == 0.05, ]
 prow <- function(sg) {
   a <- p0[p0$signal == sg & p0$witness == "NN", ]; b <- p0[p0$signal == sg & p0$witness == "dictionary", ]
@@ -37,5 +37,5 @@ writeLines(c("\\begin{tabular}{lcccccc}", "\\toprule",
   "\\cmidrule(lr){2-4}\\cmidrule(lr){5-7}",
   "signal & median $Z$ & $5\\%$ & $1\\%$ & median $Z$ & $5\\%$ & $1\\%$ \\\\", "\\midrule",
   sapply(c("NP1", "NP2", "NP3"), prow), "\\bottomrule", "\\end{tabular}"),
-  "paper_epjc/tables/table_1d_power.tex")
-cat("-> paper_epjc/tables/table_1d_null.tex, table_1d_power.tex\n")
+  "paper_figures_tables/tables/table_1d_power.tex")
+cat("-> paper_figures_tables/tables/table_1d_null.tex, table_1d_power.tex\n")

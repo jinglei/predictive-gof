@@ -1,7 +1,7 @@
 ## tex_tables_sensitivity.R -- LaTeX tables of the full tuning grids for Appendix D, typeset from
 ## tables/table_sensitivity_{1d,5d}.csv (<- table_sensitivity.R).
-## Run from the repository root:  Rscript paper_epjc/scripts/tex_tables_sensitivity.R
-##   -> paper_epjc/tables/table_sensitivity_{1d,5d}.tex
+## Run from the repository root:  Rscript paper_figures_tables/scripts/tex_tables_sensitivity.R
+##   -> paper_figures_tables/tables/table_sensitivity_{1d,5d}.tex
 ## Rates from 400 data sets are multiples of 0.0025: four decimals are exact (5-D table); the 1-D table rounds
 ## them half up to three. Median Z with its bootstrap
 ## standard error in parentheses (summ.R conventions). The default configuration is marked with a dagger.
@@ -12,7 +12,7 @@ rate <- function(d, digits = 4) {               # digits < 4: round half up (tie
 epo <- function(e) sprintf("%s\\times10^4", format(e / 1e4))
 
 ## 1-D: network clip x epochs, dictionary lambda_z
-d1 <- read.csv("paper_epjc/tables/table_sensitivity_1d.csv", stringsAsFactors = FALSE)
+d1 <- read.csv("paper_figures_tables/tables/table_sensitivity_1d.csv", stringsAsFactors = FALSE)
 nn <- d1[d1$witness == "NN", ]; dc <- d1[d1$witness == "dictionary", ]
 rows1 <- character(0)
 for (c in sort(unique(nn$clip))) for (e in sort(unique(nn$epochs))) {
@@ -34,11 +34,11 @@ writeLines(c("\\begin{tabular}{llccccc}", "\\toprule",
   " & setting & \\multicolumn{2}{c}{null: rate at} & \\multicolumn{3}{c}{median $Z$} \\\\",
   "\\cmidrule(lr){3-4}\\cmidrule(lr){5-7}",
   "witness & $(c,\\text{epochs})$ / $\\lambda$ & $5\\%$ & $1\\%$ & NP1 & NP2 & NP3 \\\\", "\\midrule", rows1,
-  "\\bottomrule", "\\end{tabular}"), "paper_epjc/tables/table_sensitivity_1d.tex")
-cat("-> paper_epjc/tables/table_sensitivity_1d.tex\n")
+  "\\bottomrule", "\\end{tabular}"), "paper_figures_tables/tables/table_sensitivity_1d.tex")
+cat("-> paper_figures_tables/tables/table_sensitivity_1d.tex\n")
 
 ## 5-D: network clip x epochs
-d5 <- read.csv("paper_epjc/tables/table_sensitivity_5d.csv", stringsAsFactors = FALSE)
+d5 <- read.csv("paper_figures_tables/tables/table_sensitivity_5d.csv", stringsAsFactors = FALSE)
 rows5 <- character(0)
 for (c in sort(unique(d5$clip))) for (e in sort(unique(d5$epochs))) {
   g <- d5[d5$clip == c & d5$epochs == e, ]
@@ -52,5 +52,5 @@ writeLines(c("\\begin{tabular}{llccccc}", "\\toprule",
   " & & \\multicolumn{3}{c}{null} & \\multicolumn{2}{c}{median $Z$} \\\\",
   "\\cmidrule(lr){3-5}\\cmidrule(lr){6-7}",
   "$c$ & epochs & variance of $Z$ & rate at $5\\%$ & rate at $1\\%$ & $Z'$ & EFT \\\\", "\\midrule", rows5,
-  "\\bottomrule", "\\end{tabular}"), "paper_epjc/tables/table_sensitivity_5d.tex")
-cat("-> paper_epjc/tables/table_sensitivity_5d.tex\n")
+  "\\bottomrule", "\\end{tabular}"), "paper_figures_tables/tables/table_sensitivity_5d.tex")
+cat("-> paper_figures_tables/tables/table_sensitivity_5d.tex\n")

@@ -6,7 +6,7 @@
 ##             The soft-damping runs (no _dmpnone suffix) are superseded and not read.
 ##   5-D NN:   clip {0.7, 1.0, 1.3} (all parameters) x epochs {2000, 3000, 5000}; null nu* = 0 (seed 201),
 ##             Z' and EFT at nu*_s = +sigma_s (seeds 61, 71); 5d/nn_test/sens_<set>_c<clip>/results_e*.rds (5d/run_nn_sens_5d.R)
-source("paper_epjc/scripts/summ.R")
+source("paper_figures_tables/scripts/summ.R")
 cell <- function(tag) function(z) summ_z(z)
 sens_1d_nn <- function() do.call(rbind, lapply(c(3, 4, 6), function(cl) do.call(rbind, lapply(c(20000, 30000, 50000), function(ep)
   do.call(rbind, lapply(c("null", "NP1", "NP2", "NP3"), function(sg) {

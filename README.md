@@ -32,9 +32,10 @@ run_*.R, launch_*.R     1-D drivers (one per group of runs; see below)
 5d/delta/delta_raw5_p8.json   the trained delta networks used for every 5-D result
 5d/run_*.R              5-D drivers
 5d/bench_nn_5d.py       timing benchmark of the 5-D network training
-paper_epjc/scripts/     one script per table or figure of the paper
-paper_epjc/tables/      the summary tables (CSV) behind the paper's tables
-paper_epjc/figures/     the paper's figures
+paper_figures_tables/   the paper's tables and figures:
+  scripts/              one script per table or figure (reads the run outputs)
+  tables/               the summary tables (CSV) behind the paper's tables
+  figures/              the paper's figures (PDF)
 ```
 
 ## Requirements
@@ -52,7 +53,7 @@ paper_epjc/figures/     the paper's figures
 
 ## Setup
 
-1. Clone the repository. Run the 1-D scripts and the scripts in `paper_epjc/scripts/` from the
+1. Clone the repository. Run the 1-D scripts and the scripts in `paper_figures_tables/scripts/` from the
    repository root, and run the 5-D drivers from `5d/`. All paths are relative to these
    directories.
 2. **5-D data.** Download the dilepton samples from Zenodo record 4442665
@@ -121,8 +122,8 @@ The timing benchmark is
 
 ### Tables and figures (from the repository root)
 
-Each script reads the run outputs above and writes into `paper_epjc/tables/` or
-`paper_epjc/figures/`.
+Each script reads the run outputs above and writes into `paper_figures_tables/tables/` or
+`paper_figures_tables/figures/`.
 
 | Paper item | Script |
 |---|---|
@@ -135,7 +136,7 @@ Each script reads the run outputs above and writes into `paper_epjc/tables/` or
 | tuning grids (Appendix D) | `table_sensitivity.R`, `fig_tuning.R`, `tex_tables_sensitivity.R` |
 | pushforward fits at the search bound (Appendix C) | `nufit_bounds_5d.R` |
 
-Run each as `Rscript paper_epjc/scripts/<name>`. The shared helpers are `summ.R` (summaries and
+Run each as `Rscript paper_figures_tables/scripts/<name>`. The shared helpers are `summ.R` (summaries and
 Monte Carlo standard errors) and `figs.R` (plot style). The scripts overwrite the supplied
 tables and figures, except `nufit_bounds_5d.R`, which refuses to overwrite its CSV.
 
