@@ -1,0 +1,13 @@
+# data, caches and run outputs
+5d/data/
+5d/cache/
+5d/nn_test/
+nn1d_test/
+runs_pois/
+*.RData
+*.rds
+*.bin
+*.log
+__pycache__/
+.Rhistory
+Rplots.pdf
