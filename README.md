@@ -2,7 +2,8 @@
 
 This repository holds the code that reproduces the simulation results in
 
-> J. Lei, *Neural-network-powered new-physics searches by predictive goodness of fit*.
+> J. Lei, *Neural-network-powered new-physics searches by predictive goodness of fit*,
+> arXiv:2611.28414 [physics.data-an] (2026), https://arxiv.org/abs/2611.28414.
 
 The method fits a flexible learner, the *witness*, to the departure from a Reference model on
 part of the data. The witness is a penalized dictionary or a neural network. The test evaluates
@@ -158,6 +159,19 @@ tables and figures, except `nufit_bounds_5d.R`, which refuses to overwrite its C
 - `sigma_A` is the standard deviation of the auxiliary measurement.
 - The reported statistic is `Z_fit` (network witness) or `Z_fit_Q` (1-D dictionary witness). It
   is approximately standard normal under the null, and large values indicate a departure.
+
+## Citation
+
+```bibtex
+@article{Lei2026predictive,
+  author        = {Lei, Jing},
+  title         = {{Neural-network-powered new-physics searches by predictive goodness of fit}},
+  year          = {2026},
+  eprint        = {2611.28414},
+  archivePrefix = {arXiv},
+  primaryClass  = {physics.data-an}
+}
+```
 
 ## License
 
